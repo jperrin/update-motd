@@ -1,0 +1,32 @@
+#!/usr/bin/python
+
+import os
+import sys
+import yum
+
+# shut up yum
+sys.stdout = os.devnull
+sys.stderr = os.devnull
+
+# Call an update to see what's available
+yb = yum.YumBase()
+yb.setCacheDir()
+yb.doConfigSetup()
+yb.doTsSetup()
+yb.doRpmDBSetup()
+updates = yb.update()
+
+# okay we need these again.
+sys.stdout = sys.__stdout__
+sys.stderr = sys.__stderr__
+
+if not updates:
+    sys.exit()
+
+# zero out our counter
+count = 0
+
+for pkg in updates:
+    count += 1
+
+print "Pending Updates: %d \n" % count

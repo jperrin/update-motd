@@ -1,0 +1,13 @@
+#!/bin/bash
+
+motd_loop() {
+  for FILE in /etc/update-motd.d/*
+  do
+    if [ -f $FILE -a -x $FILE ]; 
+    then
+      $FILE
+    fi
+  done
+}
+
+motd_loop > /etc/motd

@@ -1,0 +1,8 @@
+# This file determines how frequently we update the MOTD
+
+[Unit]
+Description=Update of the system MOTD
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=30m

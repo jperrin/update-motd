@@ -1,0 +1,11 @@
+[Unit]
+Description=Update /etc/motd
+DefaultDependencies=no
+After=default.target
+
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/update-motd
+IOSchedulingClass=idle
+
