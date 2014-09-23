@@ -1,7 +1,7 @@
 [Unit]
 Description=Update /etc/motd
 DefaultDependencies=no
-After=default.target
+After=network.target
 
 
 [Service]
@@ -9,3 +9,5 @@ Type=oneshot
 ExecStart=/usr/bin/update-motd
 IOSchedulingClass=idle
 
+[Install]
+WantedBy=multi-user.target
